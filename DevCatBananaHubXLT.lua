@@ -7915,6 +7915,7 @@ Input = PVP:AddInput("Input", {
 print("--[[ImageButton]]--")
 local Players = game:GetService("Players")
 local ContentProvider = game:GetService("ContentProvider")
+local VirtualInputManager = game:GetService("VirtualInputManager")
 local playerGui = Players.LocalPlayer:WaitForChild("PlayerGui")
 local existingGui = playerGui:FindFirstChild("CustomScreenGui")
 if existingGui then
@@ -7926,23 +7927,29 @@ ScreenGui.Parent = playerGui
 local Button = Instance.new("ImageButton")
 Button.Name = "CustomButton"
 Button.Parent = ScreenGui
-Button.Size = UDim2.new(0, 50, 0, 50)
+Button.Size = UDim2.new(0, 55, 0, 55)
+Button.BackgroundColor3 = Color3.fromRGB(225, 225, 225)
 Button.Position = UDim2.new(0.015, 0, 0.02, 20)
-Button.BackgroundTransparency = 1
-Button.Image = "rbxassetid://100310827714719"
+Button.BackgroundTransparency = 0.1
+Button.Image = "rbxassetid://74008904065156"
 local UICorner = Instance.new("UICorner")
 UICorner.CornerRadius = UDim.new(1, 0)
 UICorner.Parent = Button
+local Overlay = Instance.new("Frame")
+Overlay.Size = UDim2.new(1, 0, 1, 0)
+Overlay.BackgroundColor3 = Color3.new(1, 1, 1)
+Overlay.BackgroundTransparency = 0.6
+Overlay.Parent = Button
+local OverlayCorner = Instance.new("UICorner")
+OverlayCorner.CornerRadius = UDim.new(1, 0)
+OverlayCorner.Parent = Overlay
 local imageLoaded = false
-ContentProvider:PreloadAsync({Button.Image}, function()
+task.spawn(function()
+    ContentProvider:PreloadAsync({Button.Image})
     imageLoaded = true
 end)
 Button.MouseButton1Click:Connect(function()
-    if not imageLoaded then
-        return
-    end
-    local VirtualInputManager = game:GetService("VirtualInputManager")
-    if VirtualInputManager then
+    if imageLoaded and VirtualInputManager then
         task.defer(function()
             VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.LeftControl, false, game)
             VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.LeftControl, false, game)
