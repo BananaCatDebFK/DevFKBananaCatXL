@@ -3,6 +3,7 @@ if getgenv().Team == "Marines" then
 elseif getgenv().Team == "Pirates" then
     ReplicatedStorage.Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
 end
+
 repeat
     task.wait(1)
     local chooseTeam = playerGui:FindFirstChild("ChooseTeam", true)
