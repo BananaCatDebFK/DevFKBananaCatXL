@@ -1,3 +1,7 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
 if getgenv().Team == "Marines" then
     ReplicatedStorage.Remotes.CommF_:InvokeServer("SetTeam", "Marines")
 elseif getgenv().Team == "Pirates" then
