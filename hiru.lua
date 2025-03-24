@@ -1,22 +1,3 @@
-if not game:IsLoaded() then
-    game.Loaded:Wait()
-end
-local player = game:GetService("Players").LocalPlayer
-local loadingGui = player:WaitForChild("PlayerGui"):WaitForChild("LoadingGui")
-if loadingGui then
-    while loadingGui.Enabled do
-        task.wait(0.1)
-        local playButton = loadingGui:FindFirstChild("PlayBackground") and loadingGui.PlayBackground:FindFirstChild("Play")        
-        if playButton then
-            local connections = getconnections(playButton.Activated)
-            for _, v in ipairs(connections) do
-                if v.Function then
-                    v.Function()
-                end
-            end
-        end
-    end
-end
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local EffectContainer = ReplicatedStorage:FindFirstChild("Effect") and ReplicatedStorage.Effect:FindFirstChild("Container")
 if EffectContainer then
