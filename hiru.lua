@@ -2623,7 +2623,7 @@ spawn(function()
 end)
 Slider = Settings:AddSlider("Slider", {
      Title = "Farm Distance",
-     Default = 15,
+     Default = 30,
      Min = 0,
      Max = 30,
      Rounding = 5,
@@ -6252,6 +6252,28 @@ Volcanic:AddButton({
 	end
 })
 Volcanic:AddButton({
+    Title = "Craft Dino Hood",
+    Callback = function()
+        local args = {
+            [1] = "CraftItem",
+            [2] = "Craft",
+            [3] = "DinoHood"
+        }
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    end
+})
+Volcanic:AddButton({
+    Title = "Craft T-Rex Skull",
+    Callback = function()
+        local args = {
+            [1] = "CraftItem",
+            [2] = "Craft",
+            [3] = "TRexSkull"
+        }
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    end
+})
+Volcanic:AddButton({
     Title = "Crafting Volcanic Magnet",
     Callback = function()
         local v395 = {
@@ -7902,10 +7924,10 @@ ScreenGui.Parent = playerGui
 local Button = Instance.new("ImageButton")
 Button.Name = "CustomButton"
 Button.Parent = ScreenGui
-Button.Size = UDim2.new(0, 50, 0, 50)
+Button.Size = UDim2.new(0, 55, 0, 55)
 Button.Position = UDim2.new(0.015, 0, 0.02, 20)
 Button.BackgroundTransparency = 1
-Button.Image = "rbxassetid://100310827714719"
+Button.Image = "rbxassetid://87636192179257"
 local UICorner = Instance.new("UICorner")
 UICorner.CornerRadius = UDim.new(1, 0)
 UICorner.Parent = Button
