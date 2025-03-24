@@ -6276,6 +6276,28 @@ Volcanic:AddButton({
 	end
 })
 Volcanic:AddButton({
+    Title = "Craft Dino Hood",
+    Callback = function()
+        local args = {
+            [1] = "CraftItem",
+            [2] = "Craft",
+            [3] = "DinoHood"
+        }
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    end
+})
+Volcanic:AddButton({
+    Title = "Craft T-Rex Skull",
+    Callback = function()
+        local args = {
+            [1] = "CraftItem",
+            [2] = "Craft",
+            [3] = "TRexSkull"
+        }
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    end
+})
+Volcanic:AddButton({
     Title = "Crafting Volcanic Magnet",
     Callback = function()
         local v395 = {
